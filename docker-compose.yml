@@ -9,8 +9,6 @@ services:
       - POSTGRES_USER=mission_user
       - POSTGRES_PASSWORD=mission_password
       - POSTGRES_DB=mission_placements
-    ports:
-      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -25,8 +23,6 @@ services:
       dockerfile: Dockerfile
     container_name: mission-placements-web
     restart: always
-    ports:
-      - "3000:3000"
     environment:
       - DATABASE_URL=postgresql://mission_user:mission_password@db:5432/mission_placements?schema=public
       - AUTH_SECRET=your-production-secret-here
